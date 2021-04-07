@@ -55,6 +55,11 @@ if ($rgNotPresent)
 {
     throw "The $($resourceGroupName) resource group does not exist in this subscription."
 }
+Install-Module -Name Az.Accounts 
+Install-Module -Name Az.Sql 
+Install-Module -Name Az.Synapse 
+Install-Module -Name Az.Resources 
+Install-Module -Name SqlServer 
 
 Write-Information "Assign Ownership on Synapse Workspace"
 Assign-SynapseRole -WorkspaceName $workspaceName -RoleId "6e4bf58a-b8e1-4cc3-bbf9-d73143322b78" -PrincipalId "37548b2e-e5ab-4d2b-b0da-4d812f56c30e"  # Workspace Admin
