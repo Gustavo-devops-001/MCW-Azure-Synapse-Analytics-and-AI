@@ -60,7 +60,7 @@ Install-Module -Name Az.Sql
 Install-Module -Name Az.Synapse 
 Install-Module -Name Az.Resources 
 Install-Module -Name SqlServer 
-
+$startTime01 = Get-Date
 Write-Information "Assign Ownership on Synapse Workspace"
 Assign-SynapseRole -WorkspaceName $workspaceName -RoleId "6e4bf58a-b8e1-4cc3-bbf9-d73143322b78" -PrincipalId "37548b2e-e5ab-4d2b-b0da-4d812f56c30e"  # Workspace Admin
 Assign-SynapseRole -WorkspaceName $workspaceName -RoleId "7af0c69a-a548-47d6-aea3-d00e69bd83aa" -PrincipalId "37548b2e-e5ab-4d2b-b0da-4d812f56c30e"  # SQL Admin
@@ -445,7 +445,13 @@ foreach ($asaArtifactName in $asaArtifacts.Keys) {
 }
 
 if($validEnvironment = $true){
-        Write-Host "Environment validation has succeeded." -ForegroundColor Green
+        Write-Host ""
+	Write-Host ""
+	Write-Host ""
+	Write-Host "Environment validation has succeeded." -ForegroundColor Green
 } else {
         Write-Host "Environment validation has failed. Please check the above output for Red messages." -ForegroundColor Red
 }
+
+$endTime01 = Get-Date
+New-TimeSpan -Start $startTime01 -End $endTime01
